@@ -47,10 +47,10 @@ def main():
     month, start, end = month_window(args.month, today)
     keywords = (ROOT / 'keyword.md').read_text()
     rules = (ROOT / 'README.md').read_text()
-    key = os.environ.get('OPENAI_API_KEY')
+    key = os.environ.get('DEEPSEEK_API_KEY')
     if not key:
-        raise RuntimeError('请配置 OPENAI_API_KEY')
-    model = os.environ.get('OPENAI_MODEL') or 'gpt-5'
+        raise RuntimeError('请配置 DEEPSEEK_API_KEY')
+    model = os.environ.get('DEEPSEEK_MODEL') or 'deepseek-v4-pro'
     pending = {}
     for template in sorted((ROOT / 'reports/templates').glob('report*.md')):
         previous = ROOT / 'reports' / month / template.name
@@ -65,7 +65,7 @@ def main():
         body = json.dumps({'model': model, 'tools': [{'type': 'web_search'}],
                            'tool_choice': 'required', 'input': prompt,
                            'max_output_tokens': 16000}).encode()
-        request = urllib.request.Request('https://api.openai.com/v1/responses', data=body,
+        request = urllib.request.Request('https://api.deepseek.com/responses', data=body,
                     headers={'Authorization': f'Bearer {key}', 'Content-Type': 'application/json'})
         with urllib.request.urlopen(request, timeout=1200) as result:
             response = json.load(result)

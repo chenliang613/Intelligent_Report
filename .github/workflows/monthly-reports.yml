@@ -24,8 +24,8 @@ jobs:
           python-version: '3.12'
       - name: Generate reports with web search
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
           REPORT_MONTH: ${{ inputs.month }}
         run: python scripts/generate_reports.py --month "$REPORT_MONTH"
       - name: Upload reports
