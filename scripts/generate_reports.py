@@ -38,18 +38,29 @@ def month_window(value, today):
 
 def extract_report(response):
     if response.get('status') != 'completed':
-        raise RuntimeError('API 响应未完成')
+        raise RuntimeError(f"API 响应未完成：{response.get('status')}，{response.get('incomplete_details')}")
     if not any(x.get('type') == 'web_search_call' for x in response.get('output', [])):
         raise RuntimeError('未执行联网检索，拒绝保存报告')
-    parts = [c.get('text', '') for x in response['output']
-             if x.get('type') == 'message' for c in x.get('content', [])
-             if c.get('type') == 'output_text']
-    report = '\n'.join(parts).strip()
+    messages = [item for item in response['output']
+                if item.get('type') == 'message' and item.get('role', 'assistant') == 'assistant']
+    finals = [item for item in messages if item.get('phase') == 'final_answer']
+    # Some compatible providers omit phase. Only the last non-commentary
+    # message can be the final answer; never concatenate progress messages.
+    candidates = finals or [item for item in messages if item.get('phase') != 'commentary'][-1:]
+    if not candidates:
+        raise RuntimeError('API 未返回最终报告，只有过程消息')
+    final = candidates[-1]
+    report = '\n'.join(c.get('text', '') for c in final.get('content', [])
+                       if c.get('type') == 'output_text').strip()
     if report.startswith('```'):
         report = re.sub(r'^```[^\n]*\n', '', report)
         report = re.sub(r'\n```\s*$', '', report).strip()
+    # Discard a short preamble only when a real Markdown document follows.
+    heading = re.search(r'^# ', report, flags=re.MULTILINE)
+    if heading:
+        report = report[heading.start():]
     citations = []
-    for item in response['output']:
+    for item in [final]:
         for content in item.get('content', []):
             for annotation in content.get('annotations', []):
                 if annotation.get('type') == 'url_citation' and annotation.get('url'):
@@ -94,6 +105,7 @@ def main():
         with urllib.request.urlopen(request, timeout=1200) as result:
             response = json.load(result)
         pending[template.name] = extract_report(response)
+        print(f"已完成 {template.name}", flush=True)
     if len(pending) != len(report_names(args.report)):
         raise RuntimeError('所选报告未全部生成')
     destination = ROOT / 'reports' / month
