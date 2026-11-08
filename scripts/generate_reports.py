@@ -13,6 +13,17 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 
 
+REPORTS = {
+    'model': 'report1-model-development.md',
+    'agent': 'report2-agent-development.md',
+    'industry': 'report3-industry-adoption.md',
+}
+
+
+def report_names(selection):
+    return list(REPORTS.values()) if selection == 'all' else [REPORTS[selection]]
+
+
 def month_window(value, today):
     if not value:
         value = (today.replace(day=1) - timedelta(days=1)).strftime('%Y-%m')
@@ -42,6 +53,7 @@ def extract_report(response):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--month', default='')
+    parser.add_argument('--report', choices=['all', *REPORTS], default='all')
     args = parser.parse_args()
     today = datetime.now(ZoneInfo('Asia/Shanghai')).date()
     month, start, end = month_window(args.month, today)
@@ -52,7 +64,8 @@ def main():
         raise RuntimeError('请配置 DEEPSEEK_API_KEY')
     model = os.environ.get('DEEPSEEK_MODEL') or 'deepseek-v4-pro'
     pending = {}
-    for template in sorted((ROOT / 'reports/templates').glob('report*.md')):
+    for name in report_names(args.report):
+        template = ROOT / 'reports/templates' / name
         previous = ROOT / 'reports' / month / template.name
         old = previous.read_text() if previous.exists() else '无'
         prompt = f'''制作中文 AI 行业月报 {template.name}，覆盖 {start} 至 {end}，生成日期 {today}。
@@ -70,14 +83,14 @@ def main():
         with urllib.request.urlopen(request, timeout=1200) as result:
             response = json.load(result)
         pending[template.name] = extract_report(response)
-    if len(pending) != 3:
-        raise RuntimeError('必须生成三份报告')
+    if len(pending) != len(report_names(args.report)):
+        raise RuntimeError('所选报告未全部生成')
     destination = ROOT / 'reports' / month
     destination.mkdir(parents=True, exist_ok=True)
     for name, report in pending.items():
         (destination / name).write_text(report)
-    (destination / 'generation.json').write_text(json.dumps({
-        'month': month, 'start': str(start), 'end': str(end), 'model': model,
+    (destination / f'generation-{args.report}.json').write_text(json.dumps({
+        'report': args.report, 'month': month, 'start': str(start), 'end': str(end), 'model': model,
         'keyword_sha256': hashlib.sha256(keywords.encode()).hexdigest(),
         'generated_at': datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),
     }, ensure_ascii=False, indent=2) + '\n')

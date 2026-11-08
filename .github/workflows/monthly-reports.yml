@@ -1,9 +1,20 @@
 name: Generate monthly reports
 on:
   schedule:
-    - cron: '17 1 1 * *'
+    - cron: '17 1 5 * *'
+    - cron: '17 1 15 * *'
+    - cron: '17 1 25 * *'
   workflow_dispatch:
     inputs:
+      report:
+        description: '报告类型：模型 / 智能体 / 行业 / 全部'
+        type: choice
+        default: all
+        options:
+          - all
+          - model
+          - agent
+          - industry
       month:
         description: '报告月份 YYYY-MM；留空生成上月，当月生成截至今天的初稿'
         required: false
@@ -22,6 +33,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Select report
+        env:
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          INPUT_REPORT: ${{ inputs.report }}
+        run: |
+          case "$EVENT_SCHEDULE" in
+            '17 1 5 * *') report=model ;;
+            '17 1 15 * *') report=agent ;;
+            '17 1 25 * *') report=industry ;;
+            '') report="${INPUT_REPORT:-all}" ;;
+            *) exit 1 ;;
+          esac
+          echo "REPORT_TYPE=$report" >> "$GITHUB_ENV"
       - name: Install PDF dependencies
         run: |
           pip install -r requirements.txt
@@ -33,11 +57,11 @@ jobs:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
           REPORT_MONTH: ${{ inputs.month }}
-        run: python scripts/generate_reports.py --month "$REPORT_MONTH"
+        run: python scripts/generate_reports.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
       - name: Export PDF reports
         env:
           REPORT_MONTH: ${{ inputs.month }}
-        run: python scripts/export_pdf.py --month "$REPORT_MONTH"
+        run: python scripts/export_pdf.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
       - name: Upload reports
         uses: actions/upload-artifact@v4
         with:

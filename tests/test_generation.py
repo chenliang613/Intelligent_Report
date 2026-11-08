@@ -1,6 +1,6 @@
 import unittest
 from datetime import date
-from scripts.generate_reports import month_window, extract_report
+from scripts.generate_reports import month_window, extract_report, report_names
 
 class GenerationTests(unittest.TestCase):
     def test_previous_month_year_boundary(self):
@@ -18,3 +18,9 @@ class GenerationTests(unittest.TestCase):
     def test_refuse_unsearched_response(self):
         with self.assertRaises(RuntimeError):
             extract_report({'status': 'completed', 'output': []})
+
+    def test_independent_report_selection(self):
+        self.assertEqual(report_names('model'), ['report1-model-development.md'])
+        self.assertEqual(report_names('agent'), ['report2-agent-development.md'])
+        self.assertEqual(report_names('industry'), ['report3-industry-adoption.md'])
+        self.assertEqual(len(report_names('all')), 3)

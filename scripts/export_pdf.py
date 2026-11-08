@@ -1,6 +1,5 @@
 """Export generated monthly Markdown reports to PDFs with Chinese fonts."""
 import argparse
-import json
 from pathlib import Path
 import tempfile
 from markdown_it import MarkdownIt
@@ -19,11 +18,12 @@ pre,code { white-space: pre-wrap; overflow-wrap: anywhere; } img { max-width: 10
 '''
 
 
-def export(directory):
+def export(directory, selection="all"):
+    from generate_reports import report_names
     directory = Path(directory).resolve()
-    sources = sorted(directory.glob('report*.md'))
-    if len(sources) != 3:
-        raise ValueError('必须存在三份 Markdown 报告')
+    sources = [directory / name for name in report_names(selection)]
+    if not all(source.is_file() for source in sources):
+        raise ValueError('所选 Markdown 报告不存在')
     markdown = MarkdownIt('commonmark', {'html': False}).enable('table')
     with tempfile.TemporaryDirectory() as temporary, sync_playwright() as runner:
         browser = runner.chromium.launch()
@@ -45,9 +45,10 @@ def export(directory):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--month', default='')
+    parser.add_argument('--report', choices=['all', 'model', 'agent', 'industry'], default='all')
     args = parser.parse_args()
     from generate_reports import ROOT, month_window
     from datetime import datetime
     from zoneinfo import ZoneInfo
     month = month_window(args.month, datetime.now(ZoneInfo('Asia/Shanghai')).date())[0]
-    export(ROOT / 'reports' / month)
+    export(ROOT / 'reports' / month, args.report)
