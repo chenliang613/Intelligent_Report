@@ -45,8 +45,19 @@ def extract_report(response):
              if x.get('type') == 'message' for c in x.get('content', [])
              if c.get('type') == 'output_text']
     report = '\n'.join(parts).strip()
+    if report.startswith('```'):
+        report = re.sub(r'^```[^\n]*\n', '', report)
+        report = re.sub(r'\n```\s*$', '', report).strip()
+    citations = []
+    for item in response['output']:
+        for content in item.get('content', []):
+            for annotation in content.get('annotations', []):
+                if annotation.get('type') == 'url_citation' and annotation.get('url'):
+                    citations.append(f"- [{annotation.get('title', '来源')}]({annotation['url']})")
+    if citations:
+        report += '\n\n### 联网引用链接\n\n' + '\n'.join(dict.fromkeys(citations))
     if not report.startswith('# ') or not re.search(r'\]\(https?://', report):
-        raise RuntimeError('报告缺少标题或来源链接')
+        raise RuntimeError(f'报告缺少标题或来源链接；正文开头：{report[:350]!r}')
     return report + '\n'
 
 
