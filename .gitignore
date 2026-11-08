@@ -7,3 +7,6 @@
 .awr/cache/
 .awr/clients/
 .awr/executions/
+
+__pycache__/
+*.pyc

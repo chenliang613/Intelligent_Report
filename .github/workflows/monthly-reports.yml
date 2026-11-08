@@ -1,0 +1,44 @@
+name: Generate monthly reports
+on:
+  schedule:
+    - cron: '17 1 1 * *'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: '报告月份 YYYY-MM；留空生成上月，当月生成截至今天的初稿'
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: monthly-reports
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate reports with web search
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          REPORT_MONTH: ${{ inputs.month }}
+        run: python scripts/generate_reports.py --month "$REPORT_MONTH"
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: monthly-reports-${{ github.run_id }}
+          path: reports/
+      - name: Commit reports
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'docs: generate monthly AI reports'
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"

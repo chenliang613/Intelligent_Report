@@ -32,3 +32,18 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 ## 关键字配置（keyword.md）
 
 `keyword.md` 分三部分对应三份报告：厂商/行业等固定词、通用与维度词、排除词。**内容由用户维护**，制作报告前以文件当前内容为准。
+
+## GitHub Actions 自动生成
+
+每月 1 日北京时间 09:17 自动生成上个自然月的一期报告（包含上述三份 Markdown），保存到 `reports/YYYY-MM/` 并提交到仓库。GitHub 定时任务可能延迟；工作流须位于默认分支。
+
+配置步骤：
+
+1. 在仓库 Settings → Secrets and variables → Actions 添加 Secret `OPENAI_API_KEY`，使用有 API 额度的 OpenAI 密钥。
+2. 可选添加 Repository Variable `OPENAI_MODEL`，默认 `gpt-5`；所选模型必须支持 Responses API 的 `web_search` 工具。
+3. 确保仓库允许 Actions 写入内容；分支保护可能阻止自动提交，生成文件仍可从成功上传的 Artifact 下载。
+4. 手动生成：Actions → Generate monthly reports → Run workflow，填写 `YYYY-MM`；留空生成上月，指定当月则生成截至当天的初稿。重复运行会重新生成该月文件，并将旧报告中的用户观点提供给模型保留。
+
+每次运行读取所选分支最新检出的 `keyword.md` 与模板，不使用缓存关键词。调用 OpenAI 联网搜索会产生 API 费用。三份报告全部生成且通过基本格式检查后才写入文件；检索覆盖和事实准确性仍需人工审阅。`generation.json` 记录窗口、模型和关键词摘要，便于追踪配置版本。
+
+本地运行（Python 3.12，无第三方依赖）：`python scripts/generate_reports.py --month 2026-10`，需通过环境变量提供密钥。测试：`python -m unittest discover -s tests`。
