@@ -1,4 +1,4 @@
-"""Notify PushPlus with links to the selected monthly HTML reports."""
+"""Notify PushPlus with links to the selected monthly Markdown reports."""
 import argparse
 from datetime import datetime
 import json
@@ -8,16 +8,15 @@ import urllib.request
 from zoneinfo import ZoneInfo
 from generate_reports import ROOT, month_window, report_names
 
-from export_html import HTML_NAMES
 
 
 def build_content(month, selection, repository, revision, run_id):
     lines = [f'## {month} 月度报告已生成', '']
     for name in report_names(selection):
-        filename = HTML_NAMES[name]
+        filename = name
         report = ROOT / 'reports' / month / filename
         if not report.is_file():
-            raise RuntimeError(f'HTML 不存在：{filename}')
+            raise RuntimeError(f'Markdown 不存在：{filename}')
         path = quote(f'reports/{month}/{filename}', safe='/')
         lines.append(f'- [{filename}](https://github.com/{repository}/blob/{revision}/{path})')
     lines += ['', f'[Actions 附件下载](https://github.com/{repository}/actions/runs/{run_id})',

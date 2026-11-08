@@ -52,20 +52,18 @@ jobs:
             month="$(TZ=Asia/Shanghai date +%Y-%m)"
           fi
           echo "REPORT_MONTH=$month" >> "$GITHUB_ENV"
-      - name: Install HTML dependencies
-        run: pip install -r requirements.txt
       - name: Generate reports with web search
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
         run: python scripts/generate_reports.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
-      - name: Export HTML reports
-        run: python scripts/export_html.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
       - name: Upload reports
         uses: actions/upload-artifact@v4
         with:
           name: monthly-reports-${{ github.run_id }}
-          path: reports/
+          path: |
+            reports/**/*.md
+            reports/**/generation-*.json
       - name: Commit reports
         run: |
           git config user.name 'github-actions[bot]'
