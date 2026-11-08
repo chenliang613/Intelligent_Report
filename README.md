@@ -48,7 +48,7 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 
 本地运行（Python 3.12，无第三方依赖）：`python scripts/generate_reports.py --month 2026-10`，需通过环境变量提供密钥。测试：`python -m unittest discover -s tests`。
 
-报告直接以 Markdown（`.md`）交付，GitHub 文件页面可渲染标题、表格和来源链接，无需 HTML / PDF 转换或第三方依赖。历史 HTML 和 PDF 保留为归档，不再更新。
+报告直接以 Markdown（`.md`）交付，GitHub 文件页面可渲染标题、表格和来源链接，无需 HTML / PDF 转换或第三方依赖。历史 HTML 和 PDF 已删除，仅保留 Markdown 报告。
 
 ### PushPlus 推送
 
