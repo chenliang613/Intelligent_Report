@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "work_item": "TPL-001",
+  "source_sha": "853d6af70382e32cc50e5a7ee66ceb8eddca1669b383e6fcb5464c51e3e00a53",
+  "command": "人工逐文件复核 reports/templates/ 三份模板与 README.md 全文，对照台账验收条款逐项核对；模板结构确认来自用户 2026-10-15 会话指令（确认报告1/2、指定报告3 八大行业）",
+  "scope": [
+    "reports/templates/report1-model-development.md",
+    "reports/templates/report2-agent-development.md",
+    "reports/templates/report3-industry-adoption.md",
+    "README.md"
+  ],
+  "verified_at": 1792047665319,
+  "checks": [
+    {
+      "name": "三份模板存在且组织结构合规",
+      "passed": true,
+      "details": "report1 v1.0（六厂商×模型变化/特性 3.1.1~3.1.5 五小节）、report2 v1.0（六厂商×智能体 3.1.1~3.1.4 四小节+第4节挑战突破对照矩阵）、report3 v1.0（金融/制造/互联网/电信/电力/医疗/交通/教育八大行业×企业案例结构）；报告1/2 结构经用户 2026-10-15 会话确认，报告3 行业扩展清单由用户当日指定",
+      "criteria": [
+        "reports/templates/ 下有三份报告 MD 模板：报告1按厂商（六家）×「模型变化/特性发布」组织章节；报告2按厂商×「智能体产品发布/突破的挑战」组织章节；报告3按行业×企业实践方案组织章节。"
+      ]
+    },
+    {
+      "name": "来源引用格式约定",
+      "passed": true,
+      "details": "三份模板均约定每条动态/案例在正文标注来源：[标题](URL)，日期；附录A 统一汇总全部来源",
+      "criteria": [
+        "模板内约定来源引用格式（每条动态/案例附来源链接与日期）。"
+      ]
+    },
+    {
+      "name": "README 目录约定与月度流程",
+      "passed": true,
+      "details": "README 含目录约定（reports/templates/ 模板源头、reports/YYYY-MM/ 月度目录、keyword.md）与五步月度产出流程（读关键字→检索→填充→融入用户观点→汇总来源）",
+      "criteria": [
+        "README 更新目录约定（reports/YYYY-MM/）与月度产出流程说明。"
+      ]
+    },
+    {
+      "name": "模板复制后可直接填充",
+      "passed": true,
+      "details": "三份模板章节完整（标题/期数/覆盖窗口/摘要/总览/分详情或分行业/趋势或观察/附录），占位符与填充注释齐全，无缺失章节；报告3 无案例行业按约定写「本期无公开案例」",
+      "criteria": [
+        "每份模板复制后可直接填充，无缺失章节。"
+      ]
+    },
+    {
+      "name": "用户观点融入机制",
+      "passed": true,
+      "details": "三份模板头部注释均约定用户观点按主题归入正文对应小节，以「> **用户观点**：…」标记块呈现，保留原意不改写、与来源事实区分；README 月度流程第4步同步说明",
+      "criteria": [
+        "模板约定用户观点融入机制：用户输入的观点/总结按主题归入正文对应小节，以「> **用户观点**：…」标记块呈现，与来源事实区分；制作时保留原意不改写观点。"
+      ]
+    }
+  ]
+}
