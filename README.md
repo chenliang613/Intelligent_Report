@@ -1,6 +1,6 @@
 # Intelligent_Report
 
-每月产出三份 AI 行业月度报告（当前仅 MD 格式，PDF 为后续可选扩展），每期覆盖一个自然月的公开信息：
+每月产出三份 AI 行业月度报告（PDF 为交付格式，同时保留 Markdown 源文件），每期覆盖一个自然月的公开信息：
 
 - **报告1「Top 模型厂商模型发展报告」**：Anthropic、OpenAI、Google（美国）与智谱 GLM、Kimi、DeepSeek（中国）当月模型变化与模型特性发布。
 - **报告2「Top 智能体厂商发展报告」**：同样六家厂商当月智能体产品发布与突破的智能体挑战。
@@ -35,7 +35,7 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 
 ## GitHub Actions 自动生成
 
-每月 1 日北京时间 09:17 自动生成上个自然月的一期报告（包含上述三份 Markdown），保存到 `reports/YYYY-MM/` 并提交到仓库。GitHub 定时任务可能延迟；工作流须位于默认分支。
+每月 1 日北京时间 09:17 自动生成上个自然月的一期报告（包含上述三份 PDF 和 Markdown 源文件），保存到 `reports/YYYY-MM/` 并提交到仓库。GitHub 定时任务可能延迟；工作流须位于默认分支。
 
 配置步骤：
 
@@ -47,3 +47,5 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 每次运行读取所选分支最新检出的 `keyword.md` 与模板，不使用缓存关键词。调用 DeepSeek 联网搜索会产生 API 费用。三份报告全部生成且通过基本格式检查后才写入文件；检索覆盖和事实准确性仍需人工审阅。`generation.json` 记录窗口、模型和关键词摘要，便于追踪配置版本。
 
 本地运行（Python 3.12，无第三方依赖）：`python scripts/generate_reports.py --month 2026-10`，需通过环境变量提供密钥。测试：`python -m unittest discover -s tests`。
+
+PDF 使用 Chromium 排版，支持中文字体、可点击来源链接、跨页表格与页码。生成成功后在当月目录保存同名 `.pdf`，Actions 附件同时包含 PDF。PDF 导出依赖见 `requirements.txt`，工作流自动安装。

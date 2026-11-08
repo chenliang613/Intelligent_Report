@@ -64,7 +64,7 @@ def main():
 最新关键词：\n{keywords}\n项目规则：\n{rules}\n模板：\n{template.read_text()}\n旧报告（仅用于保留用户观点）：\n{old}'''
         body = json.dumps({'model': model, 'tools': [{'type': 'web_search'}],
                            'tool_choice': 'required', 'input': prompt,
-                           'max_output_tokens': 16000}).encode()
+                           'max_output_tokens': 32000, 'reasoning': {'effort': 'none'}}).encode()
         request = urllib.request.Request('https://api.deepseek.com/responses', data=body,
                     headers={'Authorization': f'Bearer {key}', 'Content-Type': 'application/json'})
         with urllib.request.urlopen(request, timeout=1200) as result:
