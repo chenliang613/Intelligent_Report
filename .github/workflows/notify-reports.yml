@@ -21,7 +21,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Send existing PDF links
+      - name: Install HTML dependencies
+        run: pip install -r requirements.txt
+      - name: Send existing HTML links
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           REPORT_MONTH: ${{ inputs.month }}

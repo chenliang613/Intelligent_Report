@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;"><title>2026-10 模型发展报告</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f2f5f9;color:#253247;
+font:16px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:1100px;margin:32px auto;padding:40px;background:white;border-radius:12px}
+h1{font-size:2em;color:#12365b;line-height:1.4}h2{border-bottom:1px solid #ccd7e3;padding-bottom:8px;color:#18476f}
+a{color:#1767a3;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%;font-size:.9em}
+th,td{border:1px solid #cdd6df;padding:9px;overflow-wrap:anywhere}th{background:#eaf0f6}
+.table-scroll{overflow-x:auto}blockquote{border-left:4px solid #4284ad;margin-left:0;padding-left:16px}
+pre{overflow:auto;background:#f3f6f9;padding:16px}img{max-width:100%}
+@media(max-width:700px){main{margin:0;padding:20px;border-radius:0}h1{font-size:1.6em}}
+@media print{body{background:white}main{margin:0;padding:0}h1,h2,h3{break-after:avoid}thead{display:table-header-group}}
+</style></head><body><main><h1>2026年10月 模型发展报告</h1>
+<ul>
+<li><strong>期数</strong>：2026-10</li>
+<li><strong>覆盖窗口</strong>：2026-10-01 ~ 2026-10-31</li>
+<li><strong>生成日期</strong>：2026-11-08</li>
+</ul>
+<h2>1. 本期摘要</h2>
+<ol>
+<li><strong>月之暗面（Kimi）</strong>：10-24 发布 3 万亿级参数开源模型 Kimi K3.1 Pro，官方称其为「迄今能力最强的 3 万亿级参数模型」，智能指数逼近最强闭源模型，并同步推出高速版 Highspeed（来源：<a href="https://www.cnstock.com/commonDetail/808507">Kimi K3.1 Pro 发布报道</a>，2026-10-24）——中国开源权重模型首次把与闭源前沿的智能差距压缩到约 3 分，标杆意义显著。</li>
+<li><strong>OpenAI</strong>：10-26 发布中档模型 GPT-6.1 Terra，标准 API 定价输入 $1 / 输出 $5 每百万 token，为 GPT-5.6 Terra 与 GPT-6.1 Sol 的一半，聚焦计算机操作、视觉理解与日常办公自动化（来源：<a href="https://www.dataconomy.com/2026/10/27/openai-gpt-6-1-terra-api-50-percent-cheaper-sol/">Dataconomy 报道</a>，2026-10-27）——「以价换量」路线从旗舰延伸至中档模型。</li>
+<li><strong>DeepSeek</strong>：10-17 发布 DeepSeek-V4.1-Flash-1017，在基准、运行速度与输出长度上实现「性能-成本的帕累托改进」，权重以 MIT 协议在 Hugging Face / ModelScope 开源，并同步向所有开发者开放自研 Search &amp; Fetch API（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17）——单次更新同时覆盖模型升级、开源与搜索基础设施。</li>
+<li><strong>Google</strong>：旗舰 Gemini 4 Argon 于 10-13 在 Gemini API 正式可用（9-30 首发），推广价 $2/$10 每百万 token；同月 10-06 发布端侧多模态嵌入模型 EmbeddingGemma 2（来源：<a href="https://china.googleblog.com/2026/10/gemini-4-argon_0397895399.html">Gemini 4 Argon</a>，2026-10-14；<a href="https://ai.google.dev/gemma/docs/releases">Gemma releases</a>，2026-10-06）——旗舰落地与端侧轻量模型并行推进。</li>
+<li><strong>Anthropic</strong>：10-07 发布 Claude Haiku 5.5，补齐 5.5 家族，官方称其为「迄今最快、最强的小型模型」，≤100K token 请求输入价降至 $0.10 每百万（来源：<a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a>，2026-10-07）——小型模型以价换量承接高频与智能体任务。</li>
+</ol>
+<h2>2. 月度总览</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>动态类型</th>
+<th>动态简述</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td>发布</td>
+<td>Claude Haiku 5.5 发布，补齐 5.5 家族；Max/Team 订阅新增每月 API 额度</td>
+<td>10-07</td>
+</tr>
+<tr>
+<td>Anthropic</td>
+<td>产品</td>
+<td>Claude Duet 研究预览上线（Pro/Max，属智能体产品）</td>
+<td>10-21</td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td>发布/下线</td>
+<td>GPT-6 Sol/Luna 全量开放；GPT-5.5 退役</td>
+<td>10-07 / 10-14</td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td>发布</td>
+<td>GPT-6.1 Terra 发布，API 定价减半</td>
+<td>10-26</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>发布</td>
+<td>Gemini 4 Argon 在 Gemini API 正式可用</td>
+<td>10-13</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>发布</td>
+<td>EmbeddingGemma 2（740M 开放权重）发布</td>
+<td>10-06</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>定价/分层</td>
+<td>Gemini 应用免费档仅保留 Flash-Lite，AI Plus 失去 Pro</td>
+<td>10-09 起</td>
+</tr>
+<tr>
+<td>智谱 GLM</td>
+<td>灰度/第三方</td>
+<td>GLM-5.3-Highspeed 在 ZCode 灰度测试；Cursor 上线 GLM-5.3/5.3-Flash</td>
+<td>10-12 / 10-05</td>
+</tr>
+<tr>
+<td>智谱 GLM</td>
+<td>传闻</td>
+<td>市场传闻 GLM-5.5 将发布（非官方，未证实）</td>
+<td>10-22</td>
+</tr>
+<tr>
+<td>Kimi（月之暗面）</td>
+<td>发布</td>
+<td>Kimi K3.1 Pro 及 Highspeed 版发布</td>
+<td>10-24</td>
+</tr>
+<tr>
+<td>DeepSeek</td>
+<td>更新/开源</td>
+<td>DeepSeek-V4.1-Flash-1017 更新，MIT 开源；开放 Search &amp; Fetch API</td>
+<td>10-17</td>
+</tr>
+</tbody>
+</table></div>
+<h2>3. 分厂商详情</h2>
+<h3>3.1 Anthropic</h3>
+<h4>3.1.1 模型发布与版本更新</h4>
+<ul>
+<li><strong>Claude Haiku 5.5</strong>（10-07）：Claude 5.5 家族第三款、也是补齐版本（Opus 5.5 于 9-22、Sonnet 5.5 于 9-28 发布）。官方将其定位为「迄今最便宜、最快、最强的小型模型」，面向高吞吐、成本敏感任务（来源：<a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a>，2026-10-07）。</li>
+</ul>
+<h4>3.1.2 能力与特性</h4>
+<ul>
+<li>Haiku 5.5 相对 Haiku 4.5 在编码、工具使用、computer use 与智能体（agentic）任务上有显著提升，官方称其为「首个可信的 Haiku 智能体」（来源：<a href="https://www.anthropic.com/claude-haiku-5-5">Claude Haiku 5.5 发布</a>，2026-10-07；<a href="https://llm-stats.com/blog/research/claude-haiku-5-5-launch">LLM-Stats 技术解析</a>，2026-10-07）。</li>
+</ul>
+<h4>3.1.3 价格与开放策略</h4>
+<ul>
+<li><strong>Haiku 5.5 定价</strong>：≤100K token 请求输入 $0.10、输出 $0.50 每百万 token；&gt;100K 请求输入 $0.50、输出 $2.50（来源：<a href="http://portal.nstl.gov.cn/choiceness/getChoicenessDetail.htm?serverId=42&amp;uuid=6bff1a494cd7b0a962af0ecfab1ec091&amp;recommendId=192656&amp;controlType=openhome">NSTL 转载报道</a>，2026-10-08）。社区跟踪报道称 Haiku 5.5 对齐 GPT-6 Luna 的定价（$0.10/$0.50）（来源：<a href="https://www.orcarouter.ai/blog/claude-haiku-5-5-75-percent-claim">OrcaRouter 分析</a>，2026-10-08）。</li>
+<li><strong>Max/Team 订阅每月 API 额度</strong>（10-07）：Max 和 Team 订阅现包含每月 API 额度，用于在 Claude Platform 上运行自有应用与智能体（来源：<a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a>，2026-10-07）。</li>
+</ul>
+<h4>3.1.4 基准与评测</h4>
+<p>本期窗口内检索未发现 Anthropic 官方就 Haiku 5.5 发布的具体跑分数据；官方立场为「以更低成本承接高频任务」，具体基准数字以官网模型介绍页为准。</p>
+<h4>3.1.5 其他相关动态</h4>
+<ul>
+<li><strong>Claude Duet 研究预览</strong>（10-21）：面向 Pro 和 Max 用户开放，Claude 作为主动式智能体运行于新应用。此属智能体产品（详见报告2），此处仅作模型生态相关动态记录（来源：<a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a>，2026-10-21）。</li>
+<li>窗口内检索未发现 Anthropic 在融资、收购或高管讲话方面的可核实公开动态。</li>
+</ul>
+<h3>3.2 OpenAI</h3>
+<h4>3.2.1 模型发布与版本更新</h4>
+<ul>
+<li><strong>GPT-6 Sol / GPT-6 Luna 全量开放</strong>（10-07）：面向全部 ChatGPT 用户开放，替换 GPT-5.6 Sol 与 GPT-5.6 Luna（来源：<a href="https://mobile.kbs.co.kr/news/pc/view/view.do?ncd=8680581">KBS 报道</a>，2026-10-08）。</li>
+<li><strong>GPT-5.5 退役</strong>（10-14）：官方「模型发布说明」确认 GPT-5.5 退役（来源：<a href="https://help.openai.com/en/articles/9624314-model-release-notes">OpenAI Model Release Notes</a>，2026-10-14）。</li>
+<li><strong>GPT-6.1 Terra 发布</strong>（10-26）：新增通用模型中档型号，API 模型 ID 为 <code>gpt-6.1-terra</code>，接替 GPT-5.6 Terra（来源：<a href="https://aws.amazon.com/cn/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/">AWS 公告</a>，2026-10-26；<a href="https://www.dataconomy.com/2026/10/27/openai-gpt-6-1-terra-api-50-percent-cheaper-sol/">Dataconomy 报道</a>，2026-10-27）。</li>
+</ul>
+<h4>3.2.2 能力与特性</h4>
+<ul>
+<li><strong>GPT-6.1 Terra</strong> 主打计算机操作（computer use）、视觉理解、编程与日常办公任务，如读取屏幕上内容、点击应用、撰写回复提纲等（来源：<a href="https://www.digitaltoday.co.kr/en/view/119717/openai-unveils-gpt-6-1-terra-cuts-prices-boosts-coding-performance">DigitalToday 报道</a>，2026-10-27）。知识截止日期为 2026-06-01，是 GPT-6 家族中最新的型号（来源：<a href="https://www.dataconomy.com/2026/10/27/openai-gpt-6-1-terra-api-50-percent-cheaper-sol/">Dataconomy</a>，2026-10-27）。</li>
+</ul>
+<h4>3.2.3 价格与开放策略</h4>
+<ul>
+<li><strong>GPT-6.1 Terra API 定价</strong>：标准价为输入 $1 / 输出 $5 每百万 token（缓存输入 $0.05），较 GPT-5.6 Terra 与 GPT-6.1 Sol 低 50%（来源：<a href="https://www.dataconomy.com/2026/10/27/openai-gpt-6-1-terra-api-50-percent-cheaper-sol/">Dataconomy</a>，2026-10-27）。OpenAI 通用产品线由此形成四档：Luna（$0.10/$0.50）、Terra（$1/$5）、Sol（$2/$10）、Astra（$10/$50）。</li>
+</ul>
+<h4>3.2.4 基准与评测</h4>
+<ul>
+<li><strong>Terminal-Bench 4.0</strong>：GPT-6.1 Terra 在 maximum 推理档下解决 50.3% 任务，对比 GPT-5.6 Terra 的 21.5%，提升超过一倍（来源：<a href="https://www.digit.in/features/general/gpt-61-terra-explained-what-openais-newest-computer-use-model-can-do.html">Digit 报道</a>，2026-10-27；<a href="https://thenextweb.com/news/openai-gpt-6-1-terra-computer-use">The Next Web</a>，2026-10-26）。</li>
+<li><strong>OSWorld 2.1</strong>：官方称 Terra 在 medium effort 下超过 GPT-5.6 Terra 最佳成绩（来源：<a href="https://omniakey.com/blog/gpt-6-1-terra-vs-sol">Omniakey 对比</a>，2026-10-27）。</li>
+</ul>
+<h4>3.2.5 其他相关动态</h4>
+<ul>
+<li>GPT-6.1 Terra 同日（10-26）在 Amazon Bedrock 上正式可用（来源：<a href="https://aws.amazon.com/cn/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/">AWS 公告</a>，2026-10-26）。</li>
+<li>窗口内检索未发现 OpenAI 在融资、收购或高管讲话方面的可核实公开动态。</li>
+</ul>
+<h3>3.3 Google（Gemini）</h3>
+<h4>3.3.1 模型发布与版本更新</h4>
+<ul>
+<li><strong>Gemini 4 Argon</strong>（9-30 首发，10-13 GA）：10-13 起在 Gemini API 正式可用，定位面向真实世界软件工程、企业知识工作（法律、金融）与网络安全防御的旗舰模型（来源：<a href="https://china.googleblog.com/2026/10/gemini-4-argon_0397895399.html">Gemini 4 Argon 官方博客</a>，2026-10-14）。</li>
+<li><strong>EmbeddingGemma 2</strong>（10-06）：740M 参数的开放权重多模态嵌入模型，将文本、代码、图像、视频、音频映射到统一嵌入空间，面向端侧/本地 RAG 检索（来源：<a href="https://ai.google.dev/gemma/docs/releases">Gemma releases</a>，2026-10-06；<a href="https://www.techrepublic.com/de/article/news-google-embeddinggemma-2-on-device-multimodal-search/">TechRepublic 报道</a>，2026-10-07）。</li>
+</ul>
+<h4>3.3.2 能力与特性</h4>
+<ul>
+<li>Argon 主打三个方向：real-world coding、enterprise knowledge work、cyber defense（来源：<a href="https://china.googleblog.com/2026/10/gemini-4-argon_0397895399.html">Gemini 4 Argon 官方博客</a>，2026-10-14）。</li>
+<li>EmbeddingGemma 2 是 Google 首个「原生多模态」开放权重嵌入模型，无需联网即可在手机、笔记本电脑本地处理多模态数据，数据不离开终端（来源：<a href="https://www.techrepublic.com/de/article/news-google-embeddinggemma-2-on-device-multimodal-search/">TechRepublic</a>，2026-10-07）。</li>
+</ul>
+<h4>3.3.3 价格与开放策略</h4>
+<ul>
+<li><strong>Argon API 推广价</strong>：每百万输入 token $2、输出 $10（缓存输入享 95% 折扣），优惠至 2026-11-30；此后输入标准价 $4、输出 $20（来源：<a href="https://china.googleblog.com/2026/10/gemini-4-argon_0397895399.html">Gemini 4 Argon 官方博客</a>，2026-10-14）。</li>
+<li><strong>Gemini 应用分层调整</strong>（10-09 起）：免费档（无 Google AI 订阅）仅保留 Flash-Lite；Google AI Plus（约 $4.99/月）保留 Flash-Lite 与 Flash、失去 Pro；AI Pro（$19.99/月）与 AI Ultra 保留全部三档（来源：<a href="https://support.google.com/gemini/answer/17004136">Google 支持文档</a>，2026-10；<a href="https://www.techrepublic.com/article/news-google-gemini-free-flash-lite-access/">TechRepublic</a>，2026-10-06）。</li>
+<li><strong>EmbeddingGemma 2</strong>：开放权重模型（开放许可，具体条款以官方模型卡为准）（来源：<a href="https://ai.google.dev/gemma/docs/releases">Gemma releases</a>，2026-10-06）。</li>
+</ul>
+<h4>3.3.4 基准与评测</h4>
+<ul>
+<li><strong>DeepSWE v1.1</strong>：Gemini 4 Argon 得 77.9%，官方称刷新纪录，高于 Claude Opus 5.5 的 74.2% 与 GPT-6 Astra 的 74.1%（来源：<a href="https://www.ithome.com/1/008/953.htm">IT之家</a>，2026-10-01；<a href="https://thenextweb.com/news/google-gemini-4-argon-cyber-defenders-fairwind">The Next Web</a>，2026-09-30）。</li>
+<li><strong>Vibe Code Bench</strong>：91.9%（来源：<a href="https://llm-stats.com/blog/research/gemini-4-argon-launch">LLM-Stats 技术解析</a>，2026-10-07）。</li>
+<li><strong>CWE-bench</strong>：68%，并列第一（来源：<a href="https://thenextweb.com/news/google-gemini-4-argon-cyber-defenders-fairwind">The Next Web</a>，2026-09-30）。</li>
+</ul>
+<h4>3.3.5 其他相关动态</h4>
+<ul>
+<li>窗口内检索未发现 Google/Google DeepMind 在 Gemma、Veo、Lyria、Gemini Robotics 等领域有覆盖窗口内（10-01~10-31）的其他可核实模型发布动态。</li>
+</ul>
+<h3>3.4 智谱 GLM</h3>
+<h4>3.4.1 模型发布与版本更新</h4>
+<ul>
+<li><strong>GLM-5.3-Highspeed 灰度测试</strong>（10-12 报道）：智谱在其 AI 编程工具 ZCode 3.15.1 中向订阅用户随机开放 GLM-5.3-Highspeed 体验，属灰度测试，官方尚未发布正式公告（来源：<a href="https://www.qbitai.com/2026/10/502649.html">量子位</a>，2026-10-12；<a href="https://pandaily.com/zhipu-glm-5-3-highspeed-zcode-gray-release-490-tokens-per-second-user-test">Pandaily</a>，2026-10-12）。</li>
+<li><strong>GLM-5.5 传闻</strong>（10-22 报道）：网上流传的「智谱专家交流纪要」称 GLM-5.5 或于 10 月底/11 月初发布、参数规模 2.5 万亿~3.5 万亿，属非官方传闻，本报告不视为已核实发布（来源：<a href="https://www.eet-china.com/mp/a533099.html">EET-China</a>，2026-10-22）。</li>
+</ul>
+<h4>3.4.2 能力与特性</h4>
+<ul>
+<li>社区用户实测 GLM-5.3-Highspeed 生成速度接近约 490 tokens/s，明显高于上月 GLM-5.3-FlashX 的最高 200 tokens/s（来源：<a href="https://www.qbitai.com/2026/10/502649.html">量子位</a>，2026-10-12；<a href="https://www.36kr.com/p/4022354401104000">36氪</a>，2026-10-12）。</li>
+</ul>
+<h4>3.4.3 价格与开放策略</h4>
+<ul>
+<li>窗口内检索未发现智谱在 10 月有新的 API 定价调整或开源/权重开放的官方公告。当月背景：GLM-5.3-Flash（及 FlashX）为 GLM-5 系列首个原生多模态模型，最新旗舰仍为 GLM-5.3（来源：<a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3">智谱开放文档</a>，2026-11-05 检索）。</li>
+</ul>
+<h4>3.4.4 基准与评测</h4>
+<ul>
+<li><strong>CursorBench 4.0</strong>（第三方）：AI 编程工具 Cursor 10 月上线 GLM-5.3 及 GLM-5.3-Flash，并称 GLM-5.3 在 Max 推理设置下取得其自有编程评测 CursorBench 4.0 中开放权重模型最高分（来源：<a href="https://www.stcn.com/article/detail/4206401.html">证券时报</a>，2026-10-05；<a href="https://www.thepaper.cn/newsdetail_forward_34202193">澎湃</a>，2026-10-05）。</li>
+</ul>
+<h4>3.4.5 其他相关动态</h4>
+<ul>
+<li>清华大学与智谱唐杰团队 10-15 在 arXiv 发布 GLM-Omni 技术底座相关论文，市场据此猜测 GLM-5.5 即将发布，但论文未披露版本对应关系（来源：<a href="https://wap.stockstar.com/detail/IG2026102800019536">证券之星</a>，2026-10-28）。</li>
+<li>窗口内检索未发现智谱在融资、收购方面的可核实公开动态。</li>
+</ul>
+<h3>3.5 Kimi（月之暗面）</h3>
+<h4>3.5.1 模型发布与版本更新</h4>
+<ul>
+<li><strong>Kimi K3.1 Pro 发布</strong>（10-24）：K3.1 系列首个模型，官方称其为「迄今能力最强的 3 万亿级参数模型」，支持 100 万（1,048,576 token）上下文窗口。同日 10 月 24 日为「1024 程序员节」（来源：<a href="https://www.cnstock.com/commonDetail/808507">上海证券报/中国证券网</a>，2026-10-24；<a href="https://kw.beijing.gov.cn/xwdt/kcyx/xwdtyqqy/202610/t20261026_4918451.html">北京日报</a>，2026-10-26）。</li>
+<li><strong>Kimi K3.1 Pro Highspeed</strong>：同步推出的高速版，官方称「同等智能，输出速度约 2-3 倍」（来源：<a href="https://www.cnstock.com/commonDetail/808507">上海证券报</a>，2026-10-24）。</li>
+</ul>
+<h4>3.5.2 能力与特性</h4>
+<ul>
+<li>K3.1 Pro 在代码、3D 创作、金融研究和其他长程 Agent 能力上提升明显；擅长参数化建模，可直接编写并运行 Blender、CAD 等专业工具脚本，端到端完成机械零件、建筑、多参数产品建模（来源：<a href="https://www.cnstock.com/commonDetail/808507">上海证券报</a>，2026-10-24）。</li>
+<li>金融领域：官方称 K3.1 Pro 能端到端交付完整金融工作流，提供的案例包括英伟达财务模型、宁德时代投委会报告、量子计算行业研究等（来源：<a href="https://www.cnstock.com/commonDetail/808507">上海证券报</a>，2026-10-24）。</li>
+<li>官网同步上线 3D Make 功能，支持在线预览与编辑、导出 3D 打印、视频或实况照片（来源：<a href="https://www.cnstock.com/commonDetail/808507">上海证券报</a>，2026-10-24）。</li>
+</ul>
+<h4>3.5.3 价格与开放策略</h4>
+<ul>
+<li><strong>Kimi K3.1 Pro API 定价</strong>：输入 $2.00 / 输出 $10.00 / 缓存输入 $0.20 每百万 token（同时提供人民币价 ¥13/¥68），与 GPT-6.1 Sol 相同，约为 Claude Opus 5.5 的一半（来源：<a href="https://platform.kimi.com/docs/pricing/chat">Kimi API 定价页</a>，2026-10-30；<a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro/">Simon Willison</a>，2026-10-24）。</li>
+<li><strong>开源权重</strong>：10-24 发布时定为开源模型，权重于 11 月在 Hugging Face 开放（模型卡显示约 2.8 万亿总参数、104B 激活参数，采用 Kimi K3.1 Pro License）。<strong>注</strong>：权重开放动作发生在覆盖窗口之外（11 月），此处仅作定位说明，不作为本期事件（来源：<a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro">Hugging Face 模型卡</a>，2026-11-06）。</li>
+</ul>
+<h4>3.5.4 基准与评测</h4>
+<ul>
+<li><strong>OfficeQA Pro v2</strong>：K3.1 Pro 得分 64.4，官方称取得当前最优（SoTA）成绩；该基准考察基于真实金融文档的复杂财务数据分析（来源：<a href="https://www.cnstock.com/commonDetail/808507">上海证券报</a>，2026-10-24）。</li>
+<li><strong>Artificial Analysis 智能指数</strong>：K3.1 Pro 排名第 4，位居全球开源模型之首，官方称综合智能水平接近全球领先闭源模型，价格约为 GPT-6 Astra 的五分之一（来源：<a href="https://artificialanalysis.ai/ko/articles/kimi-k3-1-pro-launch-benchmarks">Artificial Analysis</a>，2026-10-23；<a href="https://kw.beijing.gov.cn/xwdt/kcyx/xwdtyqqy/202610/t20261026_4918451.html">北京日报</a>，2026-10-26）。</li>
+<li><strong>Frontier Finance</strong>：K3.1 Pro 较 K3 进一步提升（来源：<a href="https://www.cnstock.com/commonDetail/808507">上海证券报</a>，2026-10-24）。</li>
+</ul>
+<h4>3.5.5 其他相关动态</h4>
+<ul>
+<li>窗口内检索未发现月之暗面在融资、收购方面的可核实公开动态。海外媒体 VentureBeat 于 10-25 报道 K3.1 Pro 之际提及「付费网红争议指控」，属第三方报道，未获官方证实，此处仅作事实记录（来源：<a href="https://venturebeat.com/technology/moonshots-kimi-k3-1-pro-flirts-with-open-weights-leadership-amid-paid-influencer-scandal-allegations">VentureBeat</a>，2026-10-25）。</li>
+</ul>
+<h3>3.6 DeepSeek</h3>
+<h4>3.6.1 模型发布与版本更新</h4>
+<ul>
+<li><strong>DeepSeek-V4.1-Flash-1017 更新</strong>（10-17）：将 DeepSeek V4.1 Flash 升级至 V4.1-Flash-1017，官方网页端、App 与 API 同步更新；API 调用方式与定价不变，使用 <code>deepseek-flash</code> 即可调用最新版本（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17；<a href="https://api-docs.deepseek.com/updates/">Change Log</a>，2026-10-17）。</li>
+</ul>
+<h4>3.6.2 能力与特性</h4>
+<ul>
+<li>官方称新版本在「多种基准上性能提升、任务处理更快、输出更短」，实现性能与成本的帕累托改进（Pareto improvement）（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17）。</li>
+<li>采用带自反馈（self-feedback）的强化学习，提升端到端项目开发能力，覆盖从游戏创作到 3D 建模（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17）。</li>
+<li>针对 DeepSeek Harness、腾讯 CodeBuddy、WorkBuddy 等平台优化；建议升级至 DeepSeek Harness 0.2.1-rc.1 或更高版本（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17）。</li>
+</ul>
+<h4>3.6.3 价格与开放策略</h4>
+<ul>
+<li><strong>开源权重</strong>：DeepSeek-V4.1-Flash-1017 权重以 MIT 协议在 Hugging Face（deepseek-ai/DeepSeek-V4.1-Flash-1017）与 ModelScope 开源（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17；<a href="https://docs.mistral.ai/models/deepseek-v4-flash-1017.md">Mistral 文档转载</a>，2026-10-28）。模型参数约 763B 总参数、37B 激活参数（来源：<a href="https://docs.mistral.ai/models/deepseek-v4-flash-1017.md">Mistral 文档</a>，2026-10-28）。</li>
+<li><strong>Search &amp; Fetch API 开放</strong>（10-17）：基于自研搜索引擎，向所有开发者开放，每端点 $0.75 / 千次调用；经 DeepSeek Harness、Claude Code、Codex 的服务端工具调用目前免费，2026-10-31 16:00 UTC 起计费（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17）。</li>
+</ul>
+<h4>3.6.4 基准与评测</h4>
+<p>以下为官方公布的 V4.1-Flash-1017 基准成绩（来源：<a href="https://api-docs.deepseek.com/updates/">DeepSeek Change Log</a>，2026-10-17）：</p>
+<ul>
+<li>HLE (w/o tools)：42.6（纯文本子集 44.0*）</li>
+<li>Terminal-Bench 4.0：42.3（Claude Code 框架测试）</li>
+<li>DeepSWE v1.1：77.0（Mini-SWE-V2 框架测试）</li>
+<li>ProgramBench：29.1</li>
+<li>NL2Repo-Bench：68.2</li>
+<li>Automation-Bench v1.0.6：60.5</li>
+<li>Agents' Last Exam：35.4</li>
+<li>Apex Bench v1.1：72.1</li>
+<li>Chartography (w/tools)：83.0</li>
+<li>BabyVision (w/tools)：92.5</li>
+<li>ZeroBench-main (w/tools)：51.0（Pass@5）</li>
+</ul>
+<h4>3.6.5 其他相关动态</h4>
+<ul>
+<li>官方表示自研 DeepSeek 搜索引擎指数级覆盖数千亿网页，每日可靠处理数亿搜索请求，支持多语言、过滤 SEO 垃圾与低质 AIGC（来源：<a href="https://api-docs.deepseek.com/updates/">DeepSeek Change Log</a>，2026-10-17）。</li>
+<li>窗口内检索未发现 DeepSeek 在融资、收购方面的可核实公开动态。</li>
+</ul>
+<h2>4. 横向对比与趋势</h2>
+<h3>4.1 旗舰模型对比</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>旗舰模型</th>
+<th>上下文长度</th>
+<th>API 定价档</th>
+<th>开放程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td>Claude Opus 5.5（Fable/Mythos 为前沿/受限）</td>
+<td>1M</td>
+<td>Haiku 5.5 $0.10/$0.50（≤100K）回归小型</td>
+<td>闭源（Mythos 受限访问）</td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td>GPT-6 Astra（GPT-6.1 Sol/Terra 已上市）</td>
+<td>1.05M（Astra）</td>
+<td>Terra $1/$5、Sol $2/$10、Astra $10/$50</td>
+<td>闭源</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Gemini 4 Argon</td>
+<td>1M</td>
+<td>推广价 $2/$10（至 11-30），后 $4/$20</td>
+<td>闭源（EmbeddingGemma 2 开放权重）</td>
+</tr>
+<tr>
+<td>智谱 GLM</td>
+<td>GLM-5.3（GLM-5.5 传闻未证实）</td>
+<td>1M</td>
+<td>本期无新调整</td>
+<td>开放权重（GLM 系列）</td>
+</tr>
+<tr>
+<td>Kimi（月之暗面）</td>
+<td>Kimi K3.1 Pro</td>
+<td>1M</td>
+<td>$2/$10/$0.20</td>
+<td>开放权重（11 月开放，本期发布）</td>
+</tr>
+<tr>
+<td>DeepSeek</td>
+<td>DeepSeek-V4.1 系列（V4-Pro / V4.1-Flash-1017）</td>
+<td>1M（V4 系列）</td>
+<td>V4.1-Flash-1017 定价不变；Search/Fetch $0.75/千次</td>
+<td>开放权重（MIT）</td>
+</tr>
+</tbody>
+</table></div>
+<p>&lt;!-- — 表示本期来源未给出可核验数据；空白不填。 --&gt;</p>
+<h3>4.2 本月趋势观察</h3>
+<ol>
+<li><strong>中国开放权重模型逼近闭源前沿</strong>：Kimi K3.1 Pro 在 Artificial Analysis 智能指数排名第 4、居开源之首，官方称与最强闭源模型智能差距压缩到约 3 分（来源：<a href="https://artificialanalysis.ai/ko/articles/kimi-k3-1-pro-launch-benchmarks">Artificial Analysis</a>，2026-10-23）；DeepSeek-V4.1-Flash-1017 以 MIT 开源并同步开放搜索基础设施（来源：<a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek 官方公告</a>，2026-10-17）——中国厂商同时在高智能上限与低成本开放两条路径上推进。</li>
+<li><strong>「以价换量」从旗舰扩展至中档与小型模型</strong>：OpenAI 用 Terra 将中档模型价格减半（来源：<a href="https://www.dataconomy.com/2026/10/27/openai-gpt-6-1-terra-api-50-percent-cheaper-sol/">Dataconomy</a>，2026-10-27）；Anthropic 以 Haiku 5.5 大幅降价承接高频任务（来源：<a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a>，2026-10-07）——旗舰之外的价格战全面展开。</li>
+<li><strong>C 端与 API 分层同步收紧/分化</strong>：Google 自 10-09 起把免费档压缩至 Flash-Lite、AI Plus 失去 Pro（来源：<a href="https://support.google.com/gemini/answer/17004136">Google 支持文档</a>，2026-10），而 Argon 以限时推广价 $2/$10 吸引开发者（来源：<a href="https://china.googleblog.com/2026/10/gemini-4-argon_0397895399.html">Gemini 4 Argon 官方博客</a>，2026-10-14）——旗舰推理成本向订阅分层传导，「免费可用模型」门槛在提高。</li>
+<li><strong>端侧与多模态嵌入成新焦点</strong>：Google 发布 EmbeddingGemma 2 推动本地 RAG 与隐私友好型检索（来源：<a href="https://ai.google.dev/gemma/docs/releases">Gemma releases</a>，2026-10-06）——端侧轻量模型成为旗舰之外的第二战场。</li>
+</ol>
+<h2>附录 A：参考来源</h2>
+<ol>
+<li><a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a> — Anthropic Help Center，2026-10-30（含 10-07/10-21 发布记录）</li>
+<li><a href="https://www.anthropic.com/claude-haiku-5-5">Introducing Claude Haiku 5.5</a> — Anthropic，2026-10-07</li>
+<li><a href="https://llm-stats.com/blog/research/claude-haiku-5-5-launch">Claude Haiku 5.5: The First Credible Haiku Agent</a> — LLM-Stats，2026-10-07</li>
+<li><a href="http://portal.nstl.gov.cn/choiceness/getChoicenessDetail.htm?serverId=42&amp;uuid=6bff1a494cd7b0a962af0ecfab1ec091&amp;recommendId=192656&amp;controlType=openhome">Claude Haiku 5.5 平均运行成本较前代下降约75%</a> — 国家科技图书文献中心，2026-10-08</li>
+<li><a href="https://www.orcarouter.ai/blog/claude-haiku-5-5-75-percent-claim">Claude Haiku 5.5: the 75% Claim</a> — OrcaRouter，2026-10-08</li>
+<li><a href="https://help.openai.com/en/articles/9624314-model-release-notes">OpenAI Model Release Notes</a> — OpenAI Help Center，2026-10-14（GPT-5.5 退役）</li>
+<li><a href="https://mobile.kbs.co.kr/news/pc/view/view.do?ncd=8680581">오픈AI·앤트로픽 같은 날 새 모델</a> — KBS，2026-10-08</li>
+<li><a href="https://aws.amazon.com/cn/about-aws/whats-new/2026/10/openai-gpt-6-1-terra-on-amazon-bedrock/">OpenAI GPT-6.1 Terra 现已在 Amazon Bedrock 上正式推出</a> — AWS，2026-10-26</li>
+<li><a href="https://www.dataconomy.com/2026/10/27/openai-gpt-6-1-terra-api-50-percent-cheaper-sol/">OpenAI launches GPT-6.1 Terra at half the API cost of Sol</a> — Dataconomy，2026-10-27</li>
+<li><a href="https://www.digitaltoday.co.kr/en/view/119717/openai-unveils-gpt-6-1-terra-cuts-prices-boosts-coding-performance">OpenAI GPT-6.1 Terra cuts prices and boosts coding performance</a> — DigitalToday，2026-10-27</li>
+<li><a href="https://www.digit.in/features/general/gpt-61-terra-explained-what-openais-newest-computer-use-model-can-do.html">GPT-6.1 Terra explained</a> — Digit，2026-10-27</li>
+<li><a href="https://thenextweb.com/news/openai-gpt-6-1-terra-computer-use">OpenAI launches GPT-6.1 Terra, a cheaper model for everyday computer work</a> — The Next Web，2026-10-26</li>
+<li><a href="https://omniakey.com/blog/gpt-6-1-terra-vs-sol">GPT-6.1 Terra vs GPT-6.1 Sol: Benchmarks</a> — Omniakey，2026-10-27</li>
+<li><a href="https://china.googleblog.com/2026/10/gemini-4-argon_0397895399.html">Gemini 4 Argon：为您解决最棘手的问题</a> — Google 黑板报，2026-10-14</li>
+<li><a href="https://ai.google.dev/gemma/docs/releases">Gemma releases</a> — Google AI for Developers，2026-10-06（EmbeddingGemma 2）</li>
+<li><a href="https://www.techrepublic.com/de/article/news-google-embeddinggemma-2-on-device-multimodal-search/">Google Shrinks Multimodal AI Search for Phones and Laptops</a> — TechRepublic，2026-10-07</li>
+<li><a href="https://support.google.com/gemini/answer/17004136">Gemini 模型访问与限额变更</a> — Google 支持文档，2026-10</li>
+<li><a href="https://www.techrepublic.com/article/news-google-gemini-free-flash-lite-access/">Google Limits Free Gemini to Flash-Lite Starting Oct. 9</a> — TechRepublic，2026-10-06</li>
+<li><a href="https://www.ithome.com/1/008/953.htm">谷歌最前沿 AI 模型：Gemini 4 Argon 登场</a> — IT之家，2026-10-01</li>
+<li><a href="https://thenextweb.com/news/google-gemini-4-argon-cyber-defenders-fairwind">Gemini 4 Argon: Google's new flagship reaches cyber defenders first</a> — The Next Web，2026-09-30</li>
+<li><a href="https://llm-stats.com/blog/research/gemini-4-argon-launch">Gemini 4 Argon: Breadth Leader, Fairwind-Gated Access</a> — LLM-Stats，2026-10-07</li>
+<li><a href="https://www.qbitai.com/2026/10/502649.html">智谱新模型，490 tokens/s！</a> — 量子位，2026-10-12</li>
+<li><a href="https://www.36kr.com/p/4022354401104000">每秒狂喷近500个token，智谱GLM-5.3高速版悄悄亮相</a> — 36氪，2026-10-12</li>
+<li><a href="https://pandaily.com/zhipu-glm-5-3-highspeed-zcode-gray-release-490-tokens-per-second-user-test">Zhipu's GLM-5.3-Highspeed Appears in ZCode Gray Release</a> — Pandaily，2026-10-12</li>
+<li><a href="https://www.eet-china.com/mp/a533099.html">国产最大、最强大模型有望月底发布</a> — EET-China，2026-10-22</li>
+<li><a href="https://www.stcn.com/article/detail/4206401.html">智谱股价涨近5% GLM-5.3海外走红</a> — 证券时报，2026-10-05</li>
+<li><a href="https://www.thepaper.cn/newsdetail_forward_34202193">智谱收盘涨超6%，Cursor宣布上线GLM-5.3及GLM-5.3-Flash</a> — 澎湃新闻，2026-10-05</li>
+<li><a href="https://wap.stockstar.com/detail/IG2026102800019536">港股异动 | 智谱(02513)早盘涨近7%</a> — 证券之星，2026-10-28</li>
+<li><a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3">GLM-5.3 - 智谱AI开放文档</a> — 智谱AI开放文档，2026-11-05 检索</li>
+<li><a href="https://www.cnstock.com/commonDetail/808507">智能、便宜、能打，月之暗面发布Kimi K3.1 Pro</a> — 上海证券报·中国证券网，2026-10-24</li>
+<li><a href="https://kw.beijing.gov.cn/xwdt/kcyx/xwdtyqqy/202610/t20261026_4918451.html">月之暗面发布新一代开源模型Kimi K3.1 Pro</a> — 北京日报（北京科委），2026-10-26</li>
+<li><a href="https://artificialanalysis.ai/ko/articles/kimi-k3-1-pro-launch-benchmarks">Kimi K3.1 Pro launches at 4th on the Intelligence Index</a> — Artificial Analysis，2026-10-23</li>
+<li><a href="https://platform.kimi.com/docs/pricing/chat">Model Inference Pricing - Kimi API Platform</a> — Kimi API 开放平台，2026-10-30</li>
+<li><a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro/">Introducing Kimi K3.1 Pro</a> — Simon Willison，2026-10-24</li>
+<li><a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro">moonshotai/Kimi-K3.1-Pro</a> — Hugging Face，2026-11-06</li>
+<li><a href="https://venturebeat.com/technology/moonshots-kimi-k3-1-pro-flirts-with-open-weights-leadership-amid-paid-influencer-scandal-allegations">Moonshot's Kimi K3.1 Pro flirts with open weights leadership</a> — VentureBeat，2026-10-25</li>
+<li><a href="https://api-docs.deepseek.com/news/news261017.md">DeepSeek-V4.1-Flash-1017: Wish-Driven Programming Made Real</a> — DeepSeek 官方公告，2026-10-17</li>
+<li><a href="https://api-docs.deepseek.com/updates/">Change Log | DeepSeek API Docs</a> — DeepSeek API 文档，2026-10-17</li>
+<li><a href="https://docs.mistral.ai/models/deepseek-v4-flash-1017.md">DeepSeek V4.1 Flash 1017（Mistral 文档转载）</a> — Mistral AI 文档，2026-10-28</li>
+<li><a href="https://news.iresearch.cn/content/202610/569960.shtml">DeepSeek 发布 V4.1-Flash-1017</a> — 艾瑞，2026-10-19</li>
+<li><a href="https://www.digitaltoday.co.kr/en/view/116485/deepseek-launches-search-fetch-apis-at-0-75-per-1-000-successful-requests">DeepSeek launches Search, Fetch APIs</a> — DigitalToday，2026-10-19</li>
+</ol>
+<hr />
+<blockquote>
+<p><strong>说明</strong>：本报告所有事实均基于覆盖窗口（2026-10-01 ~ 2026-10-31）内检索到的公开来源，并区分了「事件日期」与「报道日期」。旧报告中&quot;GPT-6 Sol/Luna 全量开放（10-07）&quot;&quot;GPT-6.2 退役（10-14）&quot;&quot;Gemini 4 Argon API 正式可用（10-13）&quot;&quot;Gemini 免费档仅保留 Flash-Lite（10-09 起）&quot;等动态经本期重新核实，均已更新来源链接与日期。旧报告未含「用户观点」标记块，故本期无需要保留的用户观点原文。</p>
+</blockquote>
+</main></body></html>

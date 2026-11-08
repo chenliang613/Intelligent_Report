@@ -1,4 +1,4 @@
-"""Notify PushPlus with links to the selected monthly PDFs."""
+"""Notify PushPlus with links to the selected monthly HTML reports."""
 import argparse
 from datetime import datetime
 import json
@@ -8,20 +8,16 @@ import urllib.request
 from zoneinfo import ZoneInfo
 from generate_reports import ROOT, month_window, report_names
 
-PDF_NAMES = {
-    'report1-model-development.md': '模型发展报告.pdf',
-    'report2-agent-development.md': '智能体发展报告.pdf',
-    'report3-industry-adoption.md': '行业智能化发展报告.pdf',
-}
+from export_html import HTML_NAMES
 
 
 def build_content(month, selection, repository, revision, run_id):
     lines = [f'## {month} 月度报告已生成', '']
     for name in report_names(selection):
-        filename = PDF_NAMES[name]
-        pdf = ROOT / 'reports' / month / filename
-        if not pdf.is_file():
-            raise RuntimeError(f'PDF 不存在：{filename}')
+        filename = HTML_NAMES[name]
+        report = ROOT / 'reports' / month / filename
+        if not report.is_file():
+            raise RuntimeError(f'HTML 不存在：{filename}')
         path = quote(f'reports/{month}/{filename}', safe='/')
         lines.append(f'- [{filename}](https://github.com/{repository}/blob/{revision}/{path})')
     lines += ['', f'[Actions 附件下载](https://github.com/{repository}/actions/runs/{run_id})',

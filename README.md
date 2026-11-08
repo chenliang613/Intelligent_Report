@@ -1,6 +1,6 @@
 # Intelligent_Report
 
-每月产出三份 AI 行业月度报告（PDF 为交付格式，同时保留 Markdown 源文件），每期覆盖一个自然月的公开信息：
+每月产出三份 AI 行业月度报告（HTML 为交付格式，同时保留 Markdown 源文件），每期覆盖一个自然月的公开信息：
 
 - **报告1「模型发展报告」**：Anthropic、OpenAI、Google（美国）与智谱 GLM、Kimi、DeepSeek（中国）当月模型变化与模型特性发布。
 - **报告2「智能体发展报告」**：同样六家厂商当月智能体产品发布与突破的智能体挑战。
@@ -35,7 +35,7 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 
 ## GitHub Actions 自动生成
 
-按以下时间（北京时间 09:17）分别生成上个自然月的报告：每月 5 日生成 模型发展报告，15 日生成 智能体发展报告，25 日生成行业智能化发展报告（PDF 和 Markdown 源文件），保存到 `reports/YYYY-MM/` 并提交到仓库。GitHub 定时任务可能延迟；工作流须位于默认分支。
+按以下时间（北京时间 09:17）分别生成上个自然月的报告：每月 5 日生成 模型发展报告，15 日生成 智能体发展报告，25 日生成行业智能化发展报告（HTML 和 Markdown 源文件），保存到 `reports/YYYY-MM/` 并提交到仓库。GitHub 定时任务可能延迟；工作流须位于默认分支。
 
 配置步骤：
 
@@ -48,12 +48,12 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 
 本地运行（Python 3.12，无第三方依赖）：`python scripts/generate_reports.py --month 2026-10`，需通过环境变量提供密钥。测试：`python -m unittest discover -s tests`。
 
-PDF 使用 Chromium 排版，支持中文字体、可点击来源链接、跨页表格与页码。生成成功后在当月目录保存 `模型发展报告.pdf`、`智能体发展报告.pdf`、`行业智能化发展报告.pdf`，Actions 附件同时包含 PDF。PDF 导出依赖见 `requirements.txt`，工作流自动安装。
+HTML 为单文件报告，包含内嵌样式、中文标题、表格与可点击来源链接，可下载后在浏览器离线打开。由配套 Markdown 导出，依赖见 `requirements.txt`，无需 Chromium 或系统字体安装。旧 PDF 保留为历史归档。
 
 ### PushPlus 推送
 
-在 Actions Secrets 添加 `PUSHPLUS_TOKEN`（从 PushPlus 官网获取）。每次报告归档后，通过 PushPlus 邮件渠道推送本次所选 PDF 的 GitHub 链接及 Actions 附件下载入口。需先在 PushPlus 个人资料中绑定邮箱并完成验证，无需 SMTP 配置。邮件包含 PDF 链接，不附加 PDF 文件。
+在 Actions Secrets 添加 `PUSHPLUS_TOKEN`（从 PushPlus 官网获取）。每次报告归档后，通过 PushPlus 邮件渠道推送本次所选 HTML 的 GitHub 链接及 Actions 附件下载入口。需先在 PushPlus 个人资料中绑定邮箱并完成验证，无需 SMTP 配置。邮件包含 HTML 链接，不附加 HTML 文件。
 
-推送为报告链接通知，PDF 保存在 GitHub；私有仓库需登录有权限的账号访问。缺少 Token 或接口拒绝请求会使推送步骤失败，但已归档报告仍保留。接口接受请求不等于最终送达，请在 PushPlus 查看送达状态。[官方接口文档](https://www.pushplus.plus/doc/guide/api.html)。
+推送为报告链接通知，HTML 保存在 GitHub；私有仓库需登录有权限的账号访问。缺少 Token 或接口拒绝请求会使推送步骤失败，但已归档报告仍保留。接口接受请求不等于最终送达，请在 PushPlus 查看送达状态。[官方接口文档](https://www.pushplus.plus/doc/guide/api.html)。
 
-手动运行 Generate monthly reports 会重新读取最新关键词并联网检索，经过独立成稿步骤输出新的 Markdown 和 PDF，归档后立即通过 PushPlus 邮件发送下载链接。
+手动运行 Generate monthly reports 会重新读取最新关键词并联网检索，经过独立成稿步骤输出新的 Markdown 和 HTML，归档后立即通过 PushPlus 邮件发送下载链接。
