@@ -49,3 +49,7 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 本地运行（Python 3.12，无第三方依赖）：`python scripts/generate_reports.py --month 2026-10`，需通过环境变量提供密钥。测试：`python -m unittest discover -s tests`。
 
 PDF 使用 Chromium 排版，支持中文字体、可点击来源链接、跨页表格与页码。生成成功后在当月目录保存 `模型发展报告.pdf`、`智能体发展报告.pdf`、`行业智能化发展报告.pdf`，Actions 附件同时包含 PDF。PDF 导出依赖见 `requirements.txt`，工作流自动安装。
+
+### 邮件交付
+
+生成的所选 PDF 会在归档后发送至 `chenliang613@apache.org`。请在 Actions Secrets 中配置 `SMTP_HOST`、`SMTP_USERNAME`、`SMTP_PASSWORD`（邮箱 SMTP 授权码）、`SMTP_FROM`。Repository Variable `SMTP_PORT` 默认 `465`（TLS），也支持 `587`（STARTTLS）。邮件配置缺失时发送步骤会明确失败，已归档的报告仍保留。
