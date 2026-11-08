@@ -52,6 +52,6 @@ PDF 使用 Chromium 排版，支持中文字体、可点击来源链接、跨页
 
 ### PushPlus 推送
 
-在 Actions Secrets 添加 `PUSHPLUS_TOKEN`（从 PushPlus 官网获取）。每次报告归档后，通过 PushPlus 默认渠道推送本次所选 PDF 的 GitHub 链接及 Actions 附件下载入口。无需 SMTP 配置，不发送邮件。
+在 Actions Secrets 添加 `PUSHPLUS_TOKEN`（从 PushPlus 官网获取）。每次报告归档后，通过 PushPlus 邮件渠道推送本次所选 PDF 的 GitHub 链接及 Actions 附件下载入口。需先在 PushPlus 个人资料中绑定邮箱并完成验证，无需 SMTP 配置。邮件包含 PDF 链接，不附加 PDF 文件。
 
 推送为报告链接通知，PDF 保存在 GitHub；私有仓库需登录有权限的账号访问。缺少 Token 或接口拒绝请求会使推送步骤失败，但已归档报告仍保留。接口接受请求不等于最终送达，请在 PushPlus 查看送达状态。[官方接口文档](https://www.pushplus.plus/doc/guide/api.html)。

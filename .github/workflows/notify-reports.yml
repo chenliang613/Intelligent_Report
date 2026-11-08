@@ -1,0 +1,31 @@
+name: Send existing reports via PushPlus mail
+on:
+  workflow_dispatch:
+    inputs:
+      month:
+        description: '已生成报告的月份 YYYY-MM'
+        required: true
+        type: string
+      report:
+        description: '报告类型'
+        type: choice
+        default: all
+        options: [all, model, agent, industry]
+permissions:
+  contents: read
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Send existing PDF links
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          REPORT_MONTH: ${{ inputs.month }}
+          REPORT_TYPE: ${{ inputs.report }}
+        run: |
+          export REPORT_REVISION="$(git rev-parse HEAD)"
+          python scripts/pushplus_reports.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"

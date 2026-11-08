@@ -41,7 +41,7 @@ def main():
     content = build_content(month, args.report, os.environ['GITHUB_REPOSITORY'],
                             os.environ['REPORT_REVISION'], os.environ['GITHUB_RUN_ID'])
     payload = {'token': token, 'title': f'{month} AI 月度报告',
-               'content': content, 'template': 'markdown'}
+               'content': content, 'template': 'markdown', 'channel': 'mail'}
     request = urllib.request.Request('https://www.pushplus.plus/send',
                 data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json'})
     with urllib.request.urlopen(request, timeout=60) as response:
