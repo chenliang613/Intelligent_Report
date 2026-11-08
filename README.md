@@ -50,6 +50,8 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 
 PDF 使用 Chromium 排版，支持中文字体、可点击来源链接、跨页表格与页码。生成成功后在当月目录保存 `模型发展报告.pdf`、`智能体发展报告.pdf`、`行业智能化发展报告.pdf`，Actions 附件同时包含 PDF。PDF 导出依赖见 `requirements.txt`，工作流自动安装。
 
-### 邮件交付
+### PushPlus 推送
 
-生成的所选 PDF 会在归档后发送至 `chenliang613@apache.org`。请在 Actions Secrets 中配置 `SMTP_HOST`、`SMTP_USERNAME`、`SMTP_PASSWORD`（邮箱 SMTP 授权码）、`SMTP_FROM`。Repository Variable `SMTP_PORT` 默认 `465`（TLS），也支持 `587`（STARTTLS）。邮件配置缺失时发送步骤会明确失败，已归档的报告仍保留。
+在 Actions Secrets 添加 `PUSHPLUS_TOKEN`（从 PushPlus 官网获取）。每次报告归档后，通过 PushPlus 默认渠道推送本次所选 PDF 的 GitHub 链接及 Actions 附件下载入口。无需 SMTP 配置，不发送邮件。
+
+推送为报告链接通知，PDF 保存在 GitHub；私有仓库需登录有权限的账号访问。缺少 Token 或接口拒绝请求会使推送步骤失败，但已归档报告仍保留。接口接受请求不等于最终送达，请在 PushPlus 查看送达状态。[官方接口文档](https://www.pushplus.plus/doc/guide/api.html)。

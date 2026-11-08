@@ -76,12 +76,10 @@ jobs:
           git commit -m 'docs: generate monthly AI reports'
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
-      - name: Email PDF reports
+      - name: PushPlus report notification
         env:
           REPORT_MONTH: ${{ inputs.month }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ vars.SMTP_PORT }}
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          SMTP_FROM: ${{ secrets.SMTP_FROM }}
-        run: python scripts/email_reports.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: |
+          export REPORT_REVISION="$(git rev-parse HEAD)"
+          python scripts/pushplus_reports.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
