@@ -7,16 +7,15 @@ on:
   workflow_dispatch:
     inputs:
       report:
-        description: '报告类型：模型 / 智能体 / 行业 / 全部'
+        description: '实时生成并推送：模型 / 智能体 / 行业'
         type: choice
-        default: all
+        default: model
         options:
-          - all
           - model
           - agent
           - industry
       month:
-        description: '报告月份 YYYY-MM；留空生成上月，当月生成截至今天的初稿'
+        description: '月份 YYYY-MM；手动留空生成本月截至今天，定时生成上月'
         required: false
         type: string
 permissions:
@@ -37,6 +36,8 @@ jobs:
         env:
           EVENT_SCHEDULE: ${{ github.event.schedule }}
           INPUT_REPORT: ${{ inputs.report }}
+          INPUT_MONTH: ${{ inputs.month }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           case "$EVENT_SCHEDULE" in
             '17 1 5 * *') report=model ;;
@@ -46,6 +47,11 @@ jobs:
             *) exit 1 ;;
           esac
           echo "REPORT_TYPE=$report" >> "$GITHUB_ENV"
+          month="$INPUT_MONTH"
+          if [ "$EVENT_NAME" = workflow_dispatch ] && [ -z "$month" ]; then
+            month="$(TZ=Asia/Shanghai date +%Y-%m)"
+          fi
+          echo "REPORT_MONTH=$month" >> "$GITHUB_ENV"
       - name: Install PDF dependencies
         run: |
           pip install -r requirements.txt
@@ -56,11 +62,9 @@ jobs:
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
-          REPORT_MONTH: ${{ inputs.month }}
         run: python scripts/generate_reports.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
       - name: Export PDF reports
         env:
-          REPORT_MONTH: ${{ inputs.month }}
         run: python scripts/export_pdf.py --month "$REPORT_MONTH" --report "$REPORT_TYPE"
       - name: Upload reports
         uses: actions/upload-artifact@v4
@@ -78,7 +82,6 @@ jobs:
           git push origin "HEAD:$GITHUB_REF_NAME"
       - name: PushPlus report notification
         env:
-          REPORT_MONTH: ${{ inputs.month }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
           export REPORT_REVISION="$(git rev-parse HEAD)"

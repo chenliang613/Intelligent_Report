@@ -42,7 +42,7 @@ keyword.md                        # 检索关键字配置（用户维护，见�
 1. 在仓库 Settings → Secrets and variables → Actions 添加 Secret `DEEPSEEK_API_KEY`，使用有 API 额度的 DeepSeek 密钥。
 2. 可选添加 Repository Variable `DEEPSEEK_MODEL`，默认 `deepseek-v4-pro`；所选模型必须支持 Responses API 的 `web_search` 工具；当前官方文档仅列明 `deepseek-v4-pro` 支持，`deepseek-flash` 会忽略该工具。接口依据：[DeepSeek 官方文档](https://api-docs.deepseek.com/guides/responses_api/)。
 3. 确保仓库允许 Actions 写入内容；分支保护可能阻止自动提交，生成文件仍可从成功上传的 Artifact 下载。
-4. 手动生成：Actions → Generate monthly reports → Run workflow，选择报告类型（`model` 模型、`agent` 智能体、`industry` 行业、`all` 全部），填写 `YYYY-MM`；留空生成上月，指定当月则生成截至当天的初稿。重复运行会重新生成该月文件，并将旧报告中的用户观点提供给模型保留。
+4. 手动生成：Actions → Generate monthly reports → Run workflow，选择报告类型（`model` 模型、`agent` 智能体、`industry` 行业），填写 `YYYY-MM`；手动留空生成本月截至当天的报告，指定历史月份则生成该月报告；定时任务继续覆盖上月。重复运行会重新生成该月文件，并将旧报告中的用户观点提供给模型保留。
 
 每次运行读取所选分支最新检出的 `keyword.md` 与模板，不使用缓存关键词。调用 DeepSeek 联网搜索会产生 API 费用。本次所选报告全部生成且通过基本格式检查后才写入文件；检索覆盖和事实准确性仍需人工审阅。`generation-<报告类型>.json` 记录窗口、模型和关键词摘要，便于追踪配置版本。
 
@@ -55,3 +55,5 @@ PDF 使用 Chromium 排版，支持中文字体、可点击来源链接、跨页
 在 Actions Secrets 添加 `PUSHPLUS_TOKEN`（从 PushPlus 官网获取）。每次报告归档后，通过 PushPlus 邮件渠道推送本次所选 PDF 的 GitHub 链接及 Actions 附件下载入口。需先在 PushPlus 个人资料中绑定邮箱并完成验证，无需 SMTP 配置。邮件包含 PDF 链接，不附加 PDF 文件。
 
 推送为报告链接通知，PDF 保存在 GitHub；私有仓库需登录有权限的账号访问。缺少 Token 或接口拒绝请求会使推送步骤失败，但已归档报告仍保留。接口接受请求不等于最终送达，请在 PushPlus 查看送达状态。[官方接口文档](https://www.pushplus.plus/doc/guide/api.html)。
+
+手动运行 Generate monthly reports 会重新读取最新关键词并联网检索，经过独立成稿步骤输出新的 Markdown 和 PDF，归档后立即通过 PushPlus 邮件发送下载链接。
