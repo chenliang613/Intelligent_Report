@@ -5,6 +5,12 @@ import tempfile
 from markdown_it import MarkdownIt
 from playwright.sync_api import sync_playwright
 
+PDF_NAMES = {
+    'report1-model-development.md': '模型发展报告.pdf',
+    'report2-agent-development.md': '智能体发展报告.pdf',
+    'report3-industry-adoption.md': '行业智能化发展报告.pdf',
+}
+
 STYLE = '''@page { size: A4; margin: 18mm 15mm 20mm; }
 body { font-family: "Noto Sans CJK SC", "PingFang SC", sans-serif; font-size: 10pt; line-height: 1.65; color: #253247; }
 h1 { font-size: 23pt; color: #12365b; } h2 { font-size: 16pt; border-bottom: 1px solid #bccbd9; padding-bottom: 5px; }
@@ -34,7 +40,7 @@ def export(directory, selection="all"):
             page.set_content('<!doctype html><html lang="zh-CN"><meta charset="utf-8">'
                              f'<style>{STYLE}</style><body>{markdown.render(source.read_text())}</body></html>')
             page.evaluate('document.fonts.ready')
-            target = Path(temporary) / source.with_suffix('.pdf').name
+            target = Path(temporary) / PDF_NAMES[source.name]
             page.pdf(path=str(target), print_background=True, display_header_footer=True,
                      header_template='<span></span>', footer_template='''<div style="width:100%;text-align:center;font-size:8px;color:#667788"><span class="pageNumber"></span> / <span class="totalPages"></span></div>''', prefer_css_page_size=True)
         browser.close()
